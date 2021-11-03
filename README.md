@@ -80,6 +80,25 @@ Test: "It should end the game and reset the scoreboard"
 Code:
 scores = new Score(true, 0, 0, 0)
 Expected Outcome:
+totalScoreForP1 is greater than 100: Player one wins!!
+
+
+Test: "Our rewritten constructor function should return an object with a nested object for players"
+Code:
+let testScoreBoard = new Score(true, 0, {0, 0});
+Expected Outcome:
+Score {
+  playerTurnBoolean: true,
+  currentScore: 0,
+  players: {
+    totalScoreForP1: 0,
+    totalScoreForP2: 0
+  }
+}
+
+
+
+
 
 # _Pig Dice_
 

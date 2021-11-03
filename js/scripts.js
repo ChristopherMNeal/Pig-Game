@@ -2,21 +2,30 @@ function die() {
   return Math.floor((Math.random()*6)+1);
 }
 
-function Score(playerTurnBoolean, currentScore, totalScoreForP1, totalScoreForP2) {
+function Score(playerTurnBoolean, currentScore) {
   this.playerTurnBoolean = playerTurnBoolean;
   this.currentScore = currentScore;
-  this.totalScoreForP1 = totalScoreForP1;
-  this.totalScoreForP2 = totalScoreForP2;
+  this.players = {}
 }
 
-let testScoreBoard = new Score(true, 0, 0, 0);
+function Player(score, playerName) {
+  this.score = score
+  this.playerName = playerName
+}
+
+Score.prototype.addPlayers = function(player) {
+  this.players[player.playerName] = player;
+};
+
+let testScoreBoard = new Score(true, 0);
+let player1 = new Player(0, "Liam");
+testScoreBoard.addPlayers(player1);
 
 Score.prototype.playerTurn = function() {
-  let currentRoll = die(); //change back to die() after troubleshooting
+  let currentRoll = die(); 
   console.log("CURRENT ROLL = " + currentRoll)
   this.currentScore;
   if (currentRoll === 1) {
-    // this.currentScore = 0;
     this.endTurn();
   }
   else {
@@ -32,55 +41,22 @@ Score.prototype.endTurn = function() {
     this.winner();
     this.currentScore = 0;
   } else {
-    this.totalScoreForP2 += this.currentScore
+    this.totalScoreForP2 += this.currentScore;
     this.playerTurnBoolean = true;
     this.winner();
     this.currentScore = 0;
   }
-}
+  // console.log("CAN YOU SEE THIS????")
+};
 
 Score.prototype.winner = function() {
   Object.keys(testScoreBoard).forEach(function(key) {
     if (testScoreBoard[key] >= 100) {
-      console.log(testScoreBoard[key] + " is >= 100!");
+      console.log(testScoreBoard[key] + " is >= 100!" + "\n" + key + " wins!");
       testScoreBoard = new Score(true, 0, 0, 0);
     }
   });
 };
 
-// + "\n" + key + " wins!"
-
 console.log(testScoreBoard.playerTurn());
 console.log(testScoreBoard);
-
-// const adaKeys = Object.keys(mathematician);
-// let adaString = "";
-// adaKeys.forEach(function(key) {
-//   adaString = adaString.concat(key + ": " + mathematician[key] + "\n");
-// });
-
-
-// Score.prototype.endTurn = function() {
-//   if (this.playerTurnBoolean === true) {
-//     this.totalScoreForP1 += this.currentScore;
-//     this.playerTurnBoolean = false;
-//     if (this.totalScoreForP1 >= 100) {
-//       console.log("Player One Wins!")
-//       this.winner();
-//     }
-//   } else {
-//     this.totalScoreForP2 += this.currentScore
-//     this.playerTurnBoolean = true;
-//     if (this.totalScoreForP2 >= 100) {
-//       console.log("Player Two Wins!")
-//       this.winner();
-//     }
-//   }
-// }
-
-// Score.prototype.winner = function() {
-//  scores = new Score(true, 0, 0, 0);
-// };
-
-
-
