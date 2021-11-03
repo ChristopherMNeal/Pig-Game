@@ -32,11 +32,7 @@ Score.prototype.endTurn = function() {
     this.totalScoreForP2 += this.currentScore
     this.playerTurnBoolean = true;
   }
-};
-
-// Score.prototype.hold = function() {
-//   this.endTurn();
-// }
+}
 
 console.log(scores.playerTurn());
 console.log(scores);
