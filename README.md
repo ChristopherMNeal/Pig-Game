@@ -82,7 +82,6 @@ scores = new Score(true, 0, 0, 0)
 Expected Outcome:
 totalScoreForP1 is greater than 100: Player one wins!!
 
-
 Test: "Our rewritten constructor function should return an object with a nested object for players"
 Code:
 let testScoreBoard = new Score(true, 0, {0, 0});
@@ -95,6 +94,15 @@ Score {
     totalScoreForP2: 0
   }
 }
+
+Test: "Update endTurn functions to have the correct pathway"
+Code:
+Score.prototype.endTurn = function() {
+  this.currentScore = 40
+  this.players.Liam.score += this.currentScore;
+}
+Expected outcome:
+40
 
 
 

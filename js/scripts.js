@@ -20,6 +20,8 @@ Score.prototype.addPlayers = function(player) {
 let testScoreBoard = new Score(true, 0);
 let player1 = new Player(0, "Liam");
 testScoreBoard.addPlayers(player1);
+let player2 = new Player(0, "Chris");
+testScoreBoard.addPlayers(player2);
 
 Score.prototype.playerTurn = function() {
   let currentRoll = die(); 
@@ -36,12 +38,12 @@ Score.prototype.playerTurn = function() {
 Score.prototype.endTurn = function() {
   console.log("-----END TURN-----")
   if (this.playerTurnBoolean === true) {
-    this.totalScoreForP1 += this.currentScore;
+    this.players.Liam.score += this.currentScore;
     this.playerTurnBoolean = false;
     this.winner();
     this.currentScore = 0;
   } else {
-    this.totalScoreForP2 += this.currentScore;
+    this.players.Chris.score += this.currentScore;
     this.playerTurnBoolean = true;
     this.winner();
     this.currentScore = 0;
@@ -60,3 +62,34 @@ Score.prototype.winner = function() {
 
 console.log(testScoreBoard.playerTurn());
 console.log(testScoreBoard);
+
+
+
+function Score(playerTurnBoolean, currentScore) {
+  this.playerTurnBoolean = playerTurnBoolean;
+  this.currentScore = currentScore;
+  this.players = {}
+}
+
+function Player(score, playerName) {
+  this.score = score
+  this.playerName = playerName
+}
+
+Score.prototype.addPlayers = function(player) {
+  this.players[player.playerName] = player;
+};
+
+let testScoreBoard = new Score(true, 0);
+let player1 = new Player(0, "Liam");
+testScoreBoard.addPlayers(player1);
+let player2 = new Player(0, "Chris");
+testScoreBoard.addPlayers(player2);
+
+Score.prototype.endTurn = function() {
+  this.currentScore = 40
+  this.players.Liam.score += this.currentScore;
+}
+
+testScoreBoard.endTurn();
+console.log(testScoreBoard.players.Liam.score);
