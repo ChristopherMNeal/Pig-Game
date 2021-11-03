@@ -76,6 +76,11 @@ Scores.playerTurn()
 Expected outcome: 
 CURRENT ROLL = 2
 
+Test: "It should end the game and reset the scoreboard"
+Code:
+scores = new Score(true, 0, 0, 0)
+Expected Outcome:
+
 # _Pig Dice_
 
 #### By _**Christopher Neal & Liam Eller**_

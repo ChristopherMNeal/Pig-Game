@@ -28,15 +28,49 @@ Score.prototype.endTurn = function() {
   if (this.playerTurnBoolean === true) {
     this.totalScoreForP1 += this.currentScore;
     this.playerTurnBoolean = false;
+    if (this.totalScoreForP1 >= 100) {
+      console.log("Player One Wins!")
+      this.winner();
+    }
   } else {
     this.totalScoreForP2 += this.currentScore
     this.playerTurnBoolean = true;
+    if (this.totalScoreForP2 >= 100) {
+      console.log("Player Two Wins!")
+      this.winner();
+    }
   }
 }
+
+Score.prototype.winner = function() {
+ scores = new Score(true, 0, 0, 0);
+};
 
 console.log(scores.playerTurn());
 console.log(scores);
 
+
+// Score.prototype.endTurn = function() {
+//   if (this.playerTurnBoolean === true) {
+//     this.totalScoreForP1 += this.currentScore;
+//     this.playerTurnBoolean = false;
+//     if (this.totalScoreForP1 >= 100) {
+//       console.log("Player One Wins!")
+//       this.winner();
+//     }
+//   } else {
+//     this.totalScoreForP2 += this.currentScore
+//     this.playerTurnBoolean = true;
+//     if (this.totalScoreForP2 >= 100) {
+//       console.log("Player Two Wins!")
+//       this.winner();
+//     }
+//   }
+// }
+
+// Score.prototype.winner = function() {
+//  scores = new Score(true, 0, 0, 0);
+// };
 
 
 
