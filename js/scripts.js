@@ -52,9 +52,9 @@ Score.prototype.endTurn = function() {
 };
 
 Score.prototype.winner = function() {
-  Object.keys(testScoreBoard).forEach(function(key) {
-    if (testScoreBoard[key] >= 100) {
-      console.log(testScoreBoard[key] + " is >= 100!" + "\n" + key + " wins!");
+  Object.keys(testScoreBoard.players).forEach(function(key) {
+    if (testScoreBoard.players[key].score >= 100) {
+      console.log(testScoreBoard.players[key].score + " is >= 100!" + "\n" + key + " wins!");
       testScoreBoard = new Score(true, 0, 0, 0);
     }
   });
@@ -65,31 +65,31 @@ console.log(testScoreBoard);
 
 
 
-function Score(playerTurnBoolean, currentScore) {
-  this.playerTurnBoolean = playerTurnBoolean;
-  this.currentScore = currentScore;
-  this.players = {}
-}
+// function Score(playerTurnBoolean, currentScore) {
+//   this.playerTurnBoolean = playerTurnBoolean;
+//   this.currentScore = currentScore;
+//   this.players = {}
+// }
 
-function Player(score, playerName) {
-  this.score = score
-  this.playerName = playerName
-}
+// function Player(score, playerName) {
+//   this.score = score
+//   this.playerName = playerName
+// }
 
-Score.prototype.addPlayers = function(player) {
-  this.players[player.playerName] = player;
-};
+// Score.prototype.addPlayers = function(player) {
+//   this.players[player.playerName] = player;
+// };
 
-let testScoreBoard = new Score(true, 0);
-let player1 = new Player(0, "Liam");
-testScoreBoard.addPlayers(player1);
-let player2 = new Player(0, "Chris");
-testScoreBoard.addPlayers(player2);
+// let testScoreBoard = new Score(true, 0);
+// let player1 = new Player(0, "Liam");
+// testScoreBoard.addPlayers(player1);
+// let player2 = new Player(0, "Chris");
+// testScoreBoard.addPlayers(player2);
 
-Score.prototype.endTurn = function() {
-  this.currentScore = 40
-  this.players.Liam.score += this.currentScore;
-}
+// Score.prototype.endTurn = function() {
+//   this.currentScore = 40
+//   this.players.Liam.score += this.currentScore;
+// }
 
-testScoreBoard.endTurn();
-console.log(testScoreBoard.players.Liam.score);
+// testScoreBoard.endTurn();
+// console.log(testScoreBoard.players.Liam.score);
