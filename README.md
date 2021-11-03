@@ -104,6 +104,19 @@ Score.prototype.endTurn = function() {
 Expected outcome:
 40
 
+Test: "Update Winner functions to have the correct pathway in a loop"
+Code:
+Score.prototype.winner = function() {
+  Object.keys(testScoreBoard.players).forEach(function(key) {
+    if (testScoreBoard.players[key ].score >= 100) {
+      console.log(testScoreBoard.players[key ].score + " is >= 100!" + "\n" + key + " wins!");
+      testScoreBoard = new Score(true, 0, 0, 0);
+    }
+  });
+};
+Expected outcome:
+0
+
 
 
 
